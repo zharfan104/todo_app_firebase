@@ -29,7 +29,7 @@ jobs:
         run: flutter build apk --flavor development --target lib/main_development.dart --release
           
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: app
           path: build/app/outputs/flutter-apk/app-development-release.apk
