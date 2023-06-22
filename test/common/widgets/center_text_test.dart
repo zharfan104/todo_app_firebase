@@ -5,7 +5,8 @@ import 'package:todo_app_firebase/common/widgets/center_text.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  testWidgets('CenterText correctly shows the passed text', (WidgetTester tester) async {
+  testWidgets('CenterText correctly shows the passed text',
+      (WidgetTester tester) async {
     // Define the test text
     const testText = 'Test text';
 

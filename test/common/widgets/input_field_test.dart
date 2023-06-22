@@ -3,7 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:todo_app_firebase/common/widgets/input_field.dart';
 
 void main() {
-  testWidgets('InputField displays the correct text and responds to text change', (WidgetTester tester) async {
+  testWidgets(
+      'InputField displays the correct text and responds to text change',
+      (WidgetTester tester) async {
     // Define the test label and initial value
     const testLabel = 'Test Label';
     const testInitialValue = 'Initial Value';
@@ -39,7 +41,8 @@ void main() {
     expect(changedValue, equals('New Text'));
   });
 
-  testWidgets('InputField correctly toggles the visibility of the password', (WidgetTester tester) async {
+  testWidgets('InputField correctly toggles the visibility of the password',
+      (WidgetTester tester) async {
     var isObscured = true;
     void toggleObscured() {
       isObscured = !isObscured;

@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:todo_app_firebase/common/widgets/app_snack_bar.dart';
 
 void main() {
-  testWidgets('AppSnackBar show displays a Snackbar with correct content', (WidgetTester tester) async {
+  testWidgets('AppSnackBar show displays a Snackbar with correct content',
+      (WidgetTester tester) async {
     const snackBarText = 'Test SnackBar';
 
     await tester.pumpWidget(

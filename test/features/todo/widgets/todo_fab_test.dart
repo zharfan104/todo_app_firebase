@@ -35,7 +35,9 @@ void main() {
   });
 
   group('TodoFab', () {
-    testWidgets('should build without error and call addNewTodo when onSubmitCallback is called', (tester) async {
+    testWidgets(
+        'should build without error and call addNewTodo when onSubmitCallback is called',
+        (tester) async {
       when(() => mockTodoCubit.addNewTodo(newTodoTitle)).thenAnswer((_) async {
         return Future.value();
       });

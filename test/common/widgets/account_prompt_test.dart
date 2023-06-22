@@ -19,12 +19,15 @@ void main() {
   });
 
   group('ActionPrompt', () {
-    testWidgets('should build without error and navigate when the text button is pressed', (tester) async {
+    testWidgets(
+        'should build without error and navigate when the text button is pressed',
+        (tester) async {
       const promptText = 'Prompt Text';
       const actionText = 'Action Text';
       const targetRoute = TodoRoute();
 
-      when(() => mockRouter.push(targetRoute)).thenAnswer((_) => Future.value(false));
+      when(() => mockRouter.push(targetRoute))
+          .thenAnswer((_) => Future.value(false));
 
       await tester.pumpApp(
         StackRouterScope(

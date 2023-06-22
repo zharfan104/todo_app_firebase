@@ -5,7 +5,8 @@ import 'package:todo_app_firebase/common/widgets/custom_button.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  testWidgets('CustomButton correctly shows the passed text and responds to tap when not loading',
+  testWidgets(
+      'CustomButton correctly shows the passed text and responds to tap when not loading',
       (WidgetTester tester) async {
     // Define the test title
     const testTitle = 'Test Title';
@@ -39,7 +40,9 @@ void main() {
     expect(wasPressed, isTrue);
   });
 
-  testWidgets('CustomButton correctly shows CircularProgressIndicator when loading', (WidgetTester tester) async {
+  testWidgets(
+      'CustomButton correctly shows CircularProgressIndicator when loading',
+      (WidgetTester tester) async {
     // Define the test title
     const testTitle = 'Test Title';
 
