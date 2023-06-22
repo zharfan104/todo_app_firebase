@@ -48,8 +48,10 @@ class _TodoPageBodyState extends State<TodoPageBody> {
           }
 
           if (state.todoListStatus.isLoading) {
-            return const CircularProgressIndicator(
-              color: AppColors.white,
+            return const Center(
+              child: CircularProgressIndicator(
+                color: AppColors.rainBlueDark,
+              ),
             );
           }
 
