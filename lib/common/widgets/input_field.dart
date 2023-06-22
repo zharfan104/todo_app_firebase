@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_app_firebase/common/constants/app_colors.dart';
 import 'package:todo_app_firebase/common/constants/app_size.dart';
 
-const _kInputTextHeight = 50.0;
+const _kInputTextHeight = 58.0;
 
 class InputField extends StatelessWidget {
   const InputField({
@@ -42,9 +42,7 @@ class InputField extends StatelessWidget {
               borderRadius: BorderRadius.circular(kSpacingXSmall),
             ),
             child: TextFormField(
-              keyboardType: isObscured
-                  ? TextInputType.visiblePassword
-                  : TextInputType.text,
+              keyboardType: isObscured ? TextInputType.visiblePassword : TextInputType.text,
               onChanged: onChanged,
               initialValue: initialValue,
               obscureText: isObscured,
