@@ -6,7 +6,7 @@ import 'package:todo_app_firebase/features/todo/cubit/todo_cubit.dart';
 import 'package:todo_app_firebase/gen/assets.gen.dart';
 import 'package:todo_app_firebase/l10n/l10n.dart';
 
-const _kBottomSheetHeight = 300.0;
+const _kBottomSheetHeight = 250.0;
 
 class TodoFab extends StatelessWidget {
   const TodoFab({
