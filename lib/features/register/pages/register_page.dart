@@ -38,7 +38,7 @@ class RegisterPage extends StatelessWidget implements AutoRouteWrapper {
         if (state.submitDataStatus.isLoaded) {
           await context.router.pushAndPopUntil(
             const TodoRoute(),
-            predicate: (route) => route.isFirst,
+            predicate: (route) => false,
           );
           return;
         }
