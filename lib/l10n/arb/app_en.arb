@@ -1,7 +1,13 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+    "todoTitle": "To Do",
+    "emailTitle": "Email",
+    "passwordTitle": "Password",
+    "noAccountPrompt": "You do not have an account",
+    "createAccountPrompt": "Create Account",
+    "existingAccountPrompt": "Already have an account?",
+    "loginPrompt": "Log in!",
+    "loginTitle": "Login",
+    "addTodo": "Add Todo",
+    "emptyToDo" : "Add your first TODO!"
 }
