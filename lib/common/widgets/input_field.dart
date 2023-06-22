@@ -42,7 +42,9 @@ class InputField extends StatelessWidget {
               borderRadius: BorderRadius.circular(kSpacingXSmall),
             ),
             child: TextFormField(
-              keyboardType: isObscured ? TextInputType.visiblePassword : TextInputType.text,
+              keyboardType: isObscured
+                  ? TextInputType.visiblePassword
+                  : TextInputType.text,
               onChanged: onChanged,
               initialValue: initialValue,
               obscureText: isObscured,
