@@ -11,7 +11,10 @@ class CenterText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(text),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.headlineSmall,
+      ),
     );
   }
 }
