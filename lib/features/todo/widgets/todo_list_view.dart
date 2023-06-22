@@ -25,7 +25,8 @@ class TodoListView extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (context, index) => TodoItem(
           todo: todos[index],
-          todoCubit: todoCubit,
+          onRemove: todoCubit.removeTodo,
+          onToggle: todoCubit.toggleTaskCompletion,
         ),
       ),
     );

@@ -3,17 +3,18 @@ import 'package:iconsax/iconsax.dart';
 import 'package:todo_app_firebase/common/constants/app_colors.dart';
 import 'package:todo_app_firebase/common/constants/app_size.dart';
 import 'package:todo_app_firebase/common/models/todo_model.dart';
-import 'package:todo_app_firebase/features/todo/cubit/todo_cubit.dart';
 
 class TodoItem extends StatelessWidget {
   const TodoItem({
     required this.todo,
-    required this.todoCubit,
+    required this.onRemove,
+    required this.onToggle,
     super.key,
   });
 
   final TodoModel todo;
-  final TodoCubit todoCubit;
+  final void Function(String uid) onRemove;
+  final void Function(String uid) onToggle;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class TodoItem extends StatelessWidget {
         child: const Icon(Icons.delete),
       ),
       onDismissed: (_) {
-        todoCubit.removeTodo(todo.uid);
+        onRemove(todo.uid);
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -40,7 +41,7 @@ class TodoItem extends StatelessWidget {
         ),
         child: ListTile(
           onTap: () {
-            todoCubit.toggleTaskCompletion(todo.uid);
+            onToggle(todo.uid);
           },
           leading: Container(
             padding: const EdgeInsets.all(kSpacingXXSmall),
