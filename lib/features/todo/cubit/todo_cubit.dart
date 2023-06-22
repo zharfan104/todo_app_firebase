@@ -30,8 +30,7 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus:
-              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -44,8 +43,7 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus:
-              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -53,13 +51,26 @@ class TodoCubit extends Cubit<TodoState> {
 
   Future<void> toggleTaskCompletion(String uid) async {
     try {
+      // Update the state immediately.
+      final todos = state.todoListStatus.getData ?? const [];
+      final selectedTodo = todos.firstWhere((todo) => todo.uid == uid);
+      final updatedTodo = selectedTodo.copyWith(isCompleted: !selectedTodo.isCompleted);
+
+      final updatedTodos = todos.map((todo) => todo.uid == uid ? updatedTodo : todo).toList();
+
+      emit(
+        state.copyWith(
+          todoListStatus: LoadedDataState<List<TodoModel>>(data: updatedTodos),
+        ),
+      );
+
+      // Then call the repository to update the data in the backend.
       await todoRepository.toggleTaskCompletion(uid);
       await getTodos();
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus:
-              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -72,8 +83,7 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus:
-              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }

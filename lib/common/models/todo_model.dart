@@ -11,6 +11,14 @@ class TodoModel extends Equatable {
   final String title;
   final bool isCompleted;
 
+  TodoModel copyWith({String? uid, String? title, bool? isCompleted}) {
+    return TodoModel(
+      uid: uid ?? this.uid,
+      title: title ?? this.title,
+      isCompleted: isCompleted ?? this.isCompleted,
+    );
+  }
+
   @override
   List<Object?> get props => [uid, title, isCompleted];
 }

@@ -15,6 +15,9 @@ void main() {
   final mockTodoList = [
     const TodoModel(uid: '1', title: 'Test Todo', isCompleted: false),
   ];
+  final mockToggledTodoList = [
+    const TodoModel(uid: '1', title: 'Test Todo', isCompleted: true),
+  ];
 
   setUp(() {
     todoRepository = MockTodoRepository();
@@ -24,8 +27,7 @@ void main() {
   blocTest<TodoCubit, TodoState>(
     'emits state with loaded todos when getTodos successfully retrieves data',
     build: () {
-      when(() => todoRepository.getTodos())
-          .thenAnswer((_) async => mockTodoList);
+      when(() => todoRepository.getTodos()).thenAnswer((_) async => mockTodoList);
       return todoCubit;
     },
     act: (TodoCubit cubit) => cubit.getTodos(isInitialLoadingShown: true),
@@ -48,8 +50,7 @@ void main() {
     'emits state with new todo when addNewTodo is successful',
     build: () {
       when(() => todoRepository.addNewTodo(any())).thenAnswer((_) async {});
-      when(() => todoRepository.getTodos())
-          .thenAnswer((_) async => mockTodoList);
+      when(() => todoRepository.getTodos()).thenAnswer((_) async => mockTodoList);
       return todoCubit;
     },
     act: (TodoCubit cubit) => cubit.addNewTodo('Test Todo'),
@@ -66,16 +67,25 @@ void main() {
   );
 
   blocTest<TodoCubit, TodoState>(
-    'emits state with completed task when toggleTaskCompletion is successful',
+    'emits state with updated todo when toggleTaskCompletion is successful',
     build: () {
-      when(() => todoRepository.toggleTaskCompletion(any()))
-          .thenAnswer((_) async {});
-      when(() => todoRepository.getTodos())
-          .thenAnswer((_) async => mockTodoList);
+      when(() => todoRepository.toggleTaskCompletion(any())).thenAnswer((_) async {});
+      when(() => todoRepository.getTodos()).thenAnswer((_) async => mockTodoList);
       return todoCubit;
     },
-    act: (TodoCubit cubit) => cubit.toggleTaskCompletion('1'),
+    act: (TodoCubit cubit) async {
+      await cubit.getTodos();
+      await cubit.toggleTaskCompletion('1');
+    },
     expect: () => [
+      TodoState(
+        newTodoTitle: '',
+        todoListStatus: LoadedDataState<List<TodoModel>>(data: mockTodoList),
+      ),
+      TodoState(
+        newTodoTitle: '',
+        todoListStatus: LoadedDataState<List<TodoModel>>(data: mockToggledTodoList),
+      ),
       TodoState(
         newTodoTitle: '',
         todoListStatus: LoadedDataState<List<TodoModel>>(data: mockTodoList),
@@ -83,7 +93,7 @@ void main() {
     ],
     verify: (_) {
       verify(() => todoRepository.toggleTaskCompletion('1')).called(1);
-      verify(() => todoRepository.getTodos()).called(1);
+      verify(() => todoRepository.getTodos()).called(2);
     },
   );
 
@@ -91,8 +101,7 @@ void main() {
     'emits state without removed todo when removeTodo is successful',
     build: () {
       when(() => todoRepository.removeTodo(any())).thenAnswer((_) async {});
-      when(() => todoRepository.getTodos())
-          .thenAnswer((_) async => mockTodoList);
+      when(() => todoRepository.getTodos()).thenAnswer((_) async => mockTodoList);
       return todoCubit;
     },
     act: (TodoCubit cubit) => cubit.removeTodo('1'),
