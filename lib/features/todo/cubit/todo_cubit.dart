@@ -30,7 +30,8 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -43,7 +44,8 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -54,9 +56,11 @@ class TodoCubit extends Cubit<TodoState> {
       // Update the state immediately.
       final todos = state.todoListStatus.getData ?? const [];
       final selectedTodo = todos.firstWhere((todo) => todo.uid == uid);
-      final updatedTodo = selectedTodo.copyWith(isCompleted: !selectedTodo.isCompleted);
+      final updatedTodo =
+          selectedTodo.copyWith(isCompleted: !selectedTodo.isCompleted);
 
-      final updatedTodos = todos.map((todo) => todo.uid == uid ? updatedTodo : todo).toList();
+      final updatedTodos =
+          todos.map((todo) => todo.uid == uid ? updatedTodo : todo).toList();
 
       emit(
         state.copyWith(
@@ -70,7 +74,8 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -83,7 +88,8 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
