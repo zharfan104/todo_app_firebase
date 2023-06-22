@@ -58,7 +58,7 @@ class TodoFab extends StatelessWidget {
       backgroundColor: AppColors.lightGray,
       context: context,
       isScrollControlled: true,
-      builder: (BuildContext context) {
+      builder: (_) {
         return Container(
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
