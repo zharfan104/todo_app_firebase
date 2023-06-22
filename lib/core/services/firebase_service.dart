@@ -44,13 +44,7 @@ class FirebaseService {
         title: e['title'] as String,
         uid: e.id,
       );
-    }).toList()
-      ..sort((a, b) {
-        if (a.isCompleted) {
-          return 1;
-        }
-        return -1;
-      });
+    }).toList();
 
     return todos;
   }
