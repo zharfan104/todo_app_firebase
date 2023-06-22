@@ -17,7 +17,8 @@ class TodoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final containerColor = todo.isCompleted ? AppColors.darkBlue : AppColors.pinkRed;
+    final containerColor =
+        todo.isCompleted ? AppColors.darkBlue : AppColors.pinkRed;
 
     return Dismissible(
       key: Key(todo.title),

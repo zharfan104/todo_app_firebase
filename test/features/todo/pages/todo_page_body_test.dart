@@ -15,7 +15,8 @@ import '../../../helpers/helpers.dart';
 
 class MockTodoCubit extends MockCubit<TodoState> implements TodoCubit {}
 
-class MockLogoutCubit extends MockCubit<LoadDataState<void>> implements LogoutCubit {}
+class MockLogoutCubit extends MockCubit<LoadDataState<void>>
+    implements LogoutCubit {}
 
 void main() {
   final mockTodoCubit = MockTodoCubit();
@@ -102,7 +103,8 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
 
-    testWidgets('shows TodoListView when TodoState has data and is not empty', (tester) async {
+    testWidgets('shows TodoListView when TodoState has data and is not empty',
+        (tester) async {
       when(() => mockTodoCubit.state).thenReturn(
         const TodoState(
           todoListStatus: LoadedDataState<List<TodoModel>>(
@@ -125,7 +127,8 @@ void main() {
       expect(find.byType(TodoListView), findsOneWidget);
     });
 
-    testWidgets('shows TodoEmptyText when TodoState has data and is empty', (tester) async {
+    testWidgets('shows TodoEmptyText when TodoState has data and is empty',
+        (tester) async {
       when(() => mockTodoCubit.state).thenReturn(
         const TodoState(
           todoListStatus: LoadedDataState<List<TodoModel>>(data: []),
@@ -146,10 +149,12 @@ void main() {
       expect(find.text('Add your first TODO!'), findsOneWidget);
     });
 
-    testWidgets('shows TodoEmptyText when TodoState has data and is empty', (tester) async {
+    testWidgets('shows TodoEmptyText when TodoState has data and is empty',
+        (tester) async {
       when(() => mockTodoCubit.state).thenReturn(
         const TodoState(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: 'Error Message'),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: 'Error Message'),
           newTodoTitle: '',
         ),
       );

@@ -30,7 +30,8 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -43,7 +44,8 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -56,7 +58,8 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }
@@ -69,7 +72,8 @@ class TodoCubit extends Cubit<TodoState> {
     } on FirebaseException catch (e) {
       emit(
         state.copyWith(
-          todoListStatus: ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
+          todoListStatus:
+              ErrorDataState<List<TodoModel>>(errorMessage: e.toString()),
         ),
       );
     }

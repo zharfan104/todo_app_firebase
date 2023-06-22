@@ -14,7 +14,8 @@ import '../../../helpers/helpers.dart';
 
 class MockTodoCubit extends MockCubit<TodoState> implements TodoCubit {}
 
-class MockLogoutCubit extends MockCubit<LoadDataState<void>> implements LogoutCubit {}
+class MockLogoutCubit extends MockCubit<LoadDataState<void>>
+    implements LogoutCubit {}
 
 void main() {
   final mockTodoCubit = MockTodoCubit();
